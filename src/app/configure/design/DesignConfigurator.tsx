@@ -32,13 +32,13 @@ import { useRouter } from "next/navigation";
 
 interface DesignConfiguratorProps {
   configId: string;
-  imageUrl: string;
+  url: string;
   imageDimensions: { width: number; height: number };
 }
 
 const DesignConfigurator = ({
   configId,
-  imageUrl,
+  url,
   imageDimensions,
 }: DesignConfiguratorProps) => {
   const { toast } = useToast();
@@ -113,7 +113,7 @@ const DesignConfigurator = ({
 
       const userImage = new Image();
       userImage.crossOrigin = "anonymous";
-      userImage.src = imageUrl;
+      userImage.src = url;
       await new Promise((resolve) => (userImage.onload = resolve));
 
       ctx?.drawImage(
@@ -206,7 +206,7 @@ const DesignConfigurator = ({
           }}>
           <div className="relative w-full h-full">
             <NextImage
-              src={imageUrl}
+              src={url}
               fill
               alt="your image"
               className="pointer-events-none"
