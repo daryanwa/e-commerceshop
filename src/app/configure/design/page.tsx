@@ -1,5 +1,3 @@
-"use client";
-
 import { db } from "@/db";
 import { notFound } from "next/navigation";
 import DesignConfigurator from "./DesignConfigurator";
@@ -12,8 +10,7 @@ interface PageProps {
 
 const Page = async ({ searchParams }: PageProps) => {
   const { id } = searchParams;
-  console.log(id);
-  console.log(searchParams, "searchparams");
+
   if (!id || typeof id !== "string") {
     return notFound();
   }

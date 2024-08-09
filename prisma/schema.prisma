@@ -9,8 +9,37 @@ datasource db {
 }
 
 enum OrderStatus {
-  
+  fulfilled 
+  shipped
+  awaiting_shipment
 }
+
+enum PhoneModel {
+  iphonex
+  iphone11
+  iphone12
+  iphone13
+  iphone14
+  iphone15
+}
+
+enum CaseMaterial {
+  silicone
+  polycarbonate
+}
+
+enum CaseFinish {
+  smooth
+  textured
+}
+
+enum CaseColor {
+  black
+  blue
+  rose
+}
+
+
 
 
 model Configuration{
@@ -18,5 +47,9 @@ model Configuration{
   width Int
   height Int
   url String
+  color CaseColor?
+  model PhoneModel?
+  material CaseMaterial?
+  finish CaseFinish?
   crppedImageUrl String?
 }
