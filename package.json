@@ -37,6 +37,7 @@
     "react-rnd": "^10.4.12",
     "shadcn-ui": "^0.8.0",
     "sharp": "^0.33.4",
+    "stripe": "^16.7.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^6.13.2",
