@@ -1,3 +1,4 @@
+"use server";
 import { db } from "@/db";
 import { stripe } from "@/lib/stripe";
 import { headers } from "next/headers";
@@ -7,11 +8,12 @@ import Stripe from "stripe";
 export async function POST(req: Request) {
   try {
     const body = await req.text();
-    const signature = headers().get("string-signature");
+    const signature = req.headers.get("stripe-signature");
     if (!signature) {
       return new Response("Invalid signature", { status: 400 });
     }
-
+    console.log("Received Stripe signature:", signature);
+    console.log("Received Stripe body:", body);
     const event = stripe.webhooks.constructEvent(
       body,
       signature,
