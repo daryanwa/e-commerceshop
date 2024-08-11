@@ -1,8 +1,9 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { CaseColor } from "@prisma/client";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const PhonePreview = ({
   croppedImageUrl,
@@ -11,11 +12,26 @@ const PhonePreview = ({
   croppedImageUrl: string;
   color: CaseColor;
 }) => {
+  let caseBackgroundColor = "bg-zinc-950";
+  if (color === "blue") caseBackgroundColor = "bg-blue-950";
+  if (color === "rose") caseBackgroundColor = "bg-rose-950";
   const ref = useRef<HTMLDivElement>(null);
   const [renderedDimension, setRenderedDimension] = useState({
     height: 0,
     width: 0,
   });
+
+  const handleResize = () => {
+    if (!ref.current) return;
+    const { width, height } = ref.current.getBoundingClientRect();
+    setRenderedDimension({ width, height });
+  };
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [ref.current]);
+
   return (
     <AspectRatio ref={ref} ratio={3000 / 2001} className="relative">
       <div
@@ -29,6 +45,18 @@ const PhonePreview = ({
         <img
           src={croppedImageUrl}
           width={renderedDimension.width / (3000 / 637)}
+          className={cn(
+            "phone-skew relative z-20 rounded-t-[15px] rounded-b-[10px] md:rounded-t-[30px] md:rounded-b-[20px]",
+            caseBackgroundColor
+          )}
+        />
+      </div>
+
+      <div className="relative h-full w-full z-40">
+        <img
+          alt="phone"
+          src="/clearphone.png"
+          className="pointer-events-none h-full w-full antialiased rounded-md"
         />
       </div>
     </AspectRatio>
