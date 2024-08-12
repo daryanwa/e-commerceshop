@@ -12,17 +12,17 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req: Request) {
   try {
     const body = await req.text();
-    const res = NextResponse.next();
-    res.headers.append("Access-Control-Allow-Credentials", "true");
-    res.headers.append("Access-Control-Allow-Origin", "*");
-    res.headers.append(
-      "Access-Control-Allow-Methods",
-      "GET,DELETE,PATCH,POST,PUT,OPTIONS"
-    );
-    res.headers.append(
-      "Access-Control-Allow-Headers",
-      "X-CSRF-Token, X-Requested-With, Authorisation, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-    );
+    // const res = NextResponse.next();
+    // res.headers.append("Access-Control-Allow-Credentials", "true");
+    // res.headers.append("Access-Control-Allow-Origin", "*");
+    // res.headers.append(
+    //   "Access-Control-Allow-Methods",
+    //   "GET,DELETE,PATCH,POST,PUT,OPTIONS"
+    // );
+    // res.headers.append(
+    //   "Access-Control-Allow-Headers",
+    //   "X-CSRF-Token, X-Requested-With, Authorisation, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+    // );
 
     const signature = req.headers.get("stripe-signature");
     if (!signature) {

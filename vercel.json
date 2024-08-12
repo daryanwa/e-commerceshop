@@ -13,7 +13,7 @@
         },
         {
           "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type, Authorization, next-router-state-tree, next-router-prefetch"
+          "value": "Accept"
         }
       ]
     }
