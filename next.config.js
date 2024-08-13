@@ -2,7 +2,7 @@ module.exports = {
   async headers() {
     return [
       {
-        // matching all API routes
+        // Подходит для всех маршрутов API
         source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
@@ -20,10 +20,10 @@ module.exports = {
               "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, next-router-prefetch, rsc",
           },
         ],
-        images: {
-          domains: ["utfs.io"],
-        },
       },
     ];
+  },
+  images: {
+    domains: ["utfs.io"],
   },
 };
