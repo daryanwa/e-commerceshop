@@ -1,18 +1,15 @@
-// next.config.js
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   async headers() {
     return [
       {
-        // співставлення всіх API-маршрутів
+        // matching all API routes
         source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
-          { key: "Access-Control-Allow-Origin", value: "*" }, // замініть це на список довірених доменів, з яких можна зробити запити
+          { key: "Access-Control-Allow-Origin", value: "*" },
           {
             key: "Access-Control-Allow-Methods",
-            value: "GET,DELETE,PATCH,POST,PUT",
+            value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
           },
           {
             key: "Access-Control-Allow-Headers",
@@ -24,5 +21,3 @@ const nextConfig = {
     ];
   },
 };
-
-module.exports = nextConfig;
