@@ -20,6 +20,9 @@ module.exports = {
               "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, next-router-prefetch, rsc",
           },
         ],
+        images: {
+          domains: ["utfs.io"],
+        },
       },
     ];
   },
